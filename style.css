@@ -4,7 +4,7 @@
     box-sizing: border-box;
 }
 
-#voc-inq,#voc-ffup,#voc-comp,#voc-others{
+#voc-inq,#voc-ffup,#voc-comp,#voc-others,#voc-aftersales{
     display: none;
 }
 
@@ -114,17 +114,29 @@ div.mdDivs:first-of-type{
     border-radius: 5px;
 }
 
+.threeGrid{
+    display: grid;
+    grid-template-columns: 33.33% 33.33% 33.33%;
+    margin-top: 2%;
+}
+
 .fourGrid{
     display: grid;
     grid-template-columns: 25% 25% 25% 25%;
     margin-top: 2%;
 }
 
-.fourGrid>div{
+.fourGrid{
+    display: grid;
+    grid-template-columns: 25% 25% 25% 25%;
+    margin-top: 2%;
+}
+
+.fourGrid>div,.threeGrid>div{
     width: 100%;
 }
 
-.fourGrid>div>button{
+.fourGrid>div>button,.threeGrid>div>button{
     width: 91%;
     cursor: pointer;
     padding: 4% 0;
@@ -194,11 +206,11 @@ div.mdDivs:first-of-type{
     flex: 10%;
 }
 
-/* #buttonDiv{
+#buttonDiv{
     display: none;
-} */
+}
 
-#ticketCreation{
+#ticketCreation,#follow-up,#aftersales{
     display: none;
 }
 
