@@ -3,9 +3,13 @@ let concernType = document.getElementById("concernType");
 let voc_inq = document.getElementById("voc-inq");
 let voc_ffup = document.getElementById("voc-ffup");
 let voc_comp = document.getElementById("voc-comp");
+let voc_aftersales = document.getElementById("voc-aftersales");
 let voc_others = document.getElementById("voc-others");
 let buttonDiv = document.getElementById("buttonDiv");
+
 let ticketCreation = document.getElementById("ticketCreation");
+let follow_up = document.getElementById("follow-up");
+let aftersales = document.getElementById("aftersales");
 
 let = resultDivABCA = document.getElementById("resultDivABCA");
 let = resultDivNote1 = document.getElementById("resultDivNote1");
@@ -22,6 +26,7 @@ let showDiv = document.getElementById("showDiv");
 let vocD_inq = document.getElementById("vocD_inq");
 let vocD_ffup = document.getElementById("vocD_ffup");
 let vocD_comp = document.getElementById("vocD_comp");
+let vocD_aftersales = document.getElementById("vocD_aftersales");
 let vocD_others = document.getElementById("vocD_others");
 
 let closeBTN = document.querySelectorAll(".closeBTN");
@@ -29,38 +34,133 @@ let closeBTN = document.querySelectorAll(".closeBTN");
 concernType.addEventListener("change",()=>{
     console.log(concernType.value)
 
+    voc_inq.style.display = "none";
+    voc_ffup.style.display = "none";
+    voc_comp.style.display = "none";
+    voc_aftersales.style.display = "none";
+    voc_others.style.display = "none";
+
+    ticketCreation.style.display = "none";
+    follow_up.style.display = "none";
+    buttonDiv.style.display = "none";
+    aftersales.style.display = "none";
+
     if (concernType.value == "Inquiry"){
     voc_inq.style.display = "block";
     voc_ffup.style.display = "none";
     voc_comp.style.display = "none";
+    voc_aftersales.style.display = "none";
     voc_others.style.display = "none";
     }
     else if (concernType.value == "Complaint"){
     voc_inq.style.display = "none";
     voc_ffup.style.display = "none";
     voc_comp.style.display = "block";
+    voc_aftersales.style.display = "none";
     voc_others.style.display = "none";
     }
     else if (concernType.value == "Follow-up"){
     voc_inq.style.display = "none";
     voc_ffup.style.display = "block";
     voc_comp.style.display = "none";
+    voc_aftersales.style.display = "none";
     voc_others.style.display = "none";
     }
     else if (concernType.value == "Aftersales"){
-    voc_inq.style.display = "block";
+    voc_inq.style.display = "none";
     voc_ffup.style.display = "none";
     voc_comp.style.display = "none";
+    voc_aftersales.style.display = "block";
     voc_others.style.display = "none";
+    }
+    else if (concernType.value == "Others"){
+    voc_inq.style.display = "none";
+    voc_ffup.style.display = "none";
+    voc_comp.style.display = "none";
+    voc_aftersales.style.display = "none";
+    voc_others.style.display = "block";
     }
 })
 
 vocD_comp.addEventListener("change", ()=>{
     console.log(vocD_comp.value)
 
-    if(vocD_comp.value == "complaint_NDT/NIC"){
+    const validComplaints = [
+    "No Internet Connection and Dialtone",
+    "No Internet Connection",
+    "Bridge Mode Configuration",
+    "CGNAT Deactivation/Activation",
+    "LAN Port Activation",
+    "Port Forwarding",
+    "Selective Browsing",
+    "No Dial Tone",
+    "Cannot Make Call",
+    "Cannot Receive Call",
+    "Cannot Make and Receive Call"
+];
+
+    if(validComplaints.includes(vocD_comp.value)){
         ticketCreation.style.display = "block";
         buttonDiv.style.display = "grid";
+    }else{
+        ticketCreation.style.display = "none";
+         buttonDiv.style.display = "none";
+    }
+})
+
+vocD_ffup.addEventListener("change", ()=>{
+    console.log(vocD_ffup.value)
+
+    const fFfup = [
+    "Follow up Voice and Data Problem",
+    "Follow up No internet Connection",
+    "Follow up Slow browsing",
+    "Follow up Intermittent Connection",
+    "Follow up No Dialtone",
+    "Follow up Cannot make_receive call",
+    "Follow up Relocation Request",
+    "Follow up Upgrade Request",
+    "Follow up Reconnection from TD",
+    "Follow up Reconnection from PD",
+    "Follow up New Connect",
+    "Follow up Rerouting",
+    "Follow up Change Number",
+    "Follow up Unposted Payment",
+    "Follow up Copy of Bill",
+    "Follow up BOL/e Enrollment",
+    "Follow up Service Rebate"
+];
+
+    if(fFfup.includes(vocD_ffup.value)){
+        follow_up.style.display = "block";
+        buttonDiv.style.display = "grid";
+    }else{
+        follow_up.style.display = "none";
+         buttonDiv.style.display = "none";
+    }
+})
+
+vocD_aftersales.addEventListener("change", ()=>{
+
+    const aftersopt = [
+    "Change Number",
+    "Permanent Disconnection",
+    "Reconnection from OP",
+    "Reconnection from PD",
+    "Rerouting Request",
+    "Relocation Request",
+    "Resume VTD",
+    "Upgrade Request",
+    "Voluntary VTD",
+    "Downgrade Request"
+];
+
+    if(aftersopt.includes(vocD_aftersales.value)){
+        aftersales.style.display = "block";
+        buttonDiv.style.display = "grid";
+    }else{
+        aftersales.style.display = "none";
+        buttonDiv.style.display = "none";
     }
 })
 
